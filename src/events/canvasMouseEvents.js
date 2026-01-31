@@ -1,10 +1,22 @@
-import {drawLine} from '../canvas/draw';
-import { state } from '../canvas/state';
+import {drawLine, clearLine, fillFromPoint} from '../canvas/draw';
+import { state, BrushType } from '../canvas/state';
+
+function handlePenAction(ctx, e) {
+    switch(state.brushType) {
+        case BrushType.BRUSH:
+            drawLine(ctx, state.x, state.y, e.offsetX, e.offsetY);
+            break;
+        case BrushType.ERASER:
+            clearLine(ctx, state.x, state.y, e.offsetX, e.offsetY)
+            break;
+
+    }
+}
 
 export function registerCanvasMouseEvents(canvas, ctx) {
     const handleDrawing = (e) => {
         if(state.isDrawing) {
-            drawLine(ctx, state.x, state.y, e.offsetX, e.offsetY);
+            handlePenAction(ctx, e);
             state.x = e.offsetX;
             state.y = e.offsetY;
         }
@@ -12,12 +24,16 @@ export function registerCanvasMouseEvents(canvas, ctx) {
     
     const endDrawing = (e) => {
         if (!state.isDrawing) return;
-        drawLine(ctx, state.x, state.y, e.offsetX, e.offsetY);
+
+        handlePenAction(ctx, e);
         state.isDrawing = false; //stop drawing
     }
     
     canvas.addEventListener('mousedown', (e) => {
         state.isDrawing = true; //start drawing because mouse is down
+        if(state.brushType === BrushType.FILL) {
+            fillFromPoint(ctx, e.offsetX, e.offsetY)
+        }
         state.x = e.offsetX;
         state.y = e.offsetY;
     });

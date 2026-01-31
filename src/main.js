@@ -1,5 +1,5 @@
 import { initCanvas, resizeCanva } from "./canvas/setup";
-import { state } from "./canvas/state";
+import { state, BrushType } from "./canvas/state";
 import { registerCanvasMouseEvents } from "./events/canvasMouseEvents";
 
 //canvas
@@ -8,6 +8,24 @@ const ctx = canvas.getContext('2d');
 window.addEventListener('load', () => initCanvas(canvas));
 window.addEventListener('resize',() => resizeCanva(canvas, ctx));
 registerCanvasMouseEvents(canvas, ctx);
+
+
+//tools
+const [brushButton, eraserButton, fillButton ] = document.querySelectorAll('.tool-button')
+const tools = [brushButton, eraserButton, fillButton];
+const selectBrush = (brush) => {
+    state.brushType = brush;
+    tools.forEach((tool) => {
+        if (tool.id === brush) {
+            tool.classList.add('active');
+        } else {
+            tool.classList.remove('active');
+        }
+    });
+}
+brushButton.addEventListener('click', () => selectBrush(BrushType.BRUSH));
+eraserButton.addEventListener('click', () => selectBrush(BrushType.ERASER));
+fillButton.addEventListener('click', () => selectBrush(BrushType.FILL));
 
 //brush color
 const brushColorPicker = document.getElementById('color-picker');
