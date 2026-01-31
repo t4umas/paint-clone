@@ -20,7 +20,8 @@ body {
     background-color: white;
     width: 30%;
     max-width: 200px;
-    height: 50%;
+    height: 80%;
+    max-height: 500px;
     margin: auto 20px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
