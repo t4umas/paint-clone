@@ -1,6 +1,7 @@
 export const state = {
     isDrawing: false,
-    brushSize: 25,
     x: 0,
-    y: 0
+    y: 0,
+    brushColor: 'black',
+    brushSize: 10,
 }
