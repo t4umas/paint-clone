@@ -53,8 +53,8 @@ export const fillFromPoint = (ctx, x, y) => {
     const sameColor = (c1, c2) =>
         Math.abs(c1[0] - c2[0]) < tolerance &&
         Math.abs(c1[1] - c2[1]) < tolerance &&
-        Math.abs(c1[2] - c2[2]) < tolerance;
-    
+        Math.abs(c1[2] - c2[2]) < tolerance &&
+        Math.abs(c1[3] - c2[3]) < tolerance;    
     const isInside = (x, y) =>
         x>=0 && y>=0 && x<width && y<height;
     
