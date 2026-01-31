@@ -11,7 +11,42 @@
     
     <div class="drawing-app">
       <aside class="toolbar">
-
+        <h2>Tools</h2>
+        <button id="brush-tool" class="tool-button active">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2.77732 19.7825L3.38442 15.6213C3.421 15.3489 3.54532 15.0958 3.73856 14.9004L15.5011 3.12516C15.6535 2.9712 15.8428 2.85895 16.051 2.79915C16.2592 2.73936 16.4792 2.73403 16.6901 2.78367C17.7701 3.08264 18.749 3.66828 19.5232 4.47849C20.3307 5.25768 20.9121 6.24112 21.2054 7.32428C21.255 7.53511 21.2497 7.75515 21.1899 7.96333C21.1301 8.1715 21.0178 8.36084 20.8639 8.51318L9.08864 20.2758C8.8932 20.469 8.64012 20.5933 8.36771 20.6299L4.20654 21.237C4.01002 21.2654 3.80959 21.2471 3.62145 21.1836C3.43332 21.1202 3.26277 21.0133 3.12361 20.8717C2.98445 20.73 2.88059 20.5577 2.82043 20.3684C2.76027 20.1792 2.7455 19.9785 2.77732 19.7825Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M13.2751 5.36383L18.6378 10.7266" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Brush
+        </button>
+        <button id="eraser-tool" class="tool-button">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.47058 6.01471V18.5294C5.47058 19.251 5.75721 19.943 6.26742 20.4532C6.77763 20.9634 7.46962 21.25 8.19117 21.25H15.8088C16.5304 21.25 17.2224 20.9634 17.7326 20.4532C18.2428 19.943 18.5294 19.251 18.5294 18.5294V6.01471" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3.29413 6.01471H20.7059" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8.73529 6.01471V4.38235C8.73529 3.94943 8.90727 3.53423 9.2134 3.2281C9.51952 2.92198 9.93472 2.75 10.3676 2.75H13.6323C14.0653 2.75 14.4805 2.92198 14.7866 3.2281C15.0927 3.53423 15.2647 3.94943 15.2647 4.38235V6.01471" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9.82352 16.9915V11.5535" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14.1765 16.9915V11.5535" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Eraser</button>
+        <button id="fill-tool" class="tool-button">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 13.277C20 8.75225 15.41 4.79563 13.19 3.14123C12.8456 2.88714 12.4285 2.75 12 2.75C11.5715 2.75 11.1544 2.88714 10.81 3.14123C8.59 4.79563 4 8.75225 4 13.277C4 19.2567 9 21.25 12 21.25C15 21.25 20 19.2567 20 13.277Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M7 13.277C7 14.5986 7.52678 15.8661 8.46447 16.8006C9.40215 17.7351 10.6739 18.2601 12 18.2601" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Fill</button>
+        <h2>Color</h2>
+        <input type="color" id="color-picker" value="#000000" />
+        <h2>Brush Size</h2>
+        <input type="range" id="brush-size" min="1" max="50" value="5" />
+        <h2>Actions</h2>
+        <button id="clear-button" class="action-button">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16.2162 9.38892L11.0053 14.5998" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"/>
+            <path d="M11.0052 9.40015L16.2162 14.6111" stroke="currentColor" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"/>
+            <path d="M21.25 12V15.3808C21.25 16.2774 20.8938 17.1373 20.2598 17.7713C19.6258 18.4054 18.7659 18.7616 17.8692 18.7616H8.6622C7.76586 18.7608 6.90652 18.4041 6.27311 17.7699L3.21913 13.6002C2.91282 13.1227 2.75 12.5673 2.75 12C2.75 11.4327 2.91282 10.8773 3.21913 10.3997L6.27311 6.2301C6.90652 5.5959 7.76586 5.23919 8.6622 5.2384H17.8692C18.7659 5.2384 19.6258 5.59459 20.2598 6.22861C20.8938 6.86263 21.25 7.72255 21.25 8.61919V12Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Clear
+        </button>
       </aside>
 
       <main class="canvas-area">

@@ -1,4 +1,4 @@
-|# TODOS of project
+# TODOS of project
 
 - [ ] Having a basic interface with a canva
 - [ ] Stylize it with CSS
