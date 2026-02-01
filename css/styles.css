@@ -121,3 +121,31 @@ body {
     border-radius: 4px;
     margin: 0 auto;
 }
+
+#print-overlay {
+    position: fixed;
+    inset: 0;
+    background: white;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    /* on the top */
+}
+
+#print-overlay img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Printing */
+@media print {
+    body * {
+       display: none !important;
+   }
+
+    #print-overlay,
+    #print-overlay * {
+        display: flex !important;
+    }
+}

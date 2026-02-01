@@ -53,7 +53,7 @@ saveButton.addEventListener('click', () => {
     //first fill the canva with blank
     ctx.save();
 
-    ctx.globalCompositeOperation = 'destination-over';
+    ctx.globalCompositeOperation = 'destination-over'; //paint under
     ctx.fillStyle = 'white';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -64,4 +64,19 @@ saveButton.addEventListener('click', () => {
     link.download = 'image.png';
     link.href = canvas.toDataURL('image/png');
     link.click();
+});
+
+//print canva
+const printButton = document.getElementById('print-button');
+printButton.addEventListener('click', () =>{
+    const img = document.getElementById('print-image');
+    const overlay = document.getElementById('print-overlay');
+
+    img.src = canvas.toDataURL('image/png');
+    overlay.style.display = 'flex';
+
+    setTimeout(() => {
+        window.print();
+        overlay.style.display = 'none';
+    }, 100);
 });
