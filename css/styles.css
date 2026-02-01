@@ -21,7 +21,7 @@ body {
     width: 30%;
     max-width: 200px;
     height: 80%;
-    max-height: 500px;
+    max-height: 600px;
     margin: auto 20px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
@@ -63,6 +63,7 @@ body {
 /* Made the button blue */
 .tool-button.active {
     background-color: #4A90E2;
+    color: white;
 }
 
 .tool-button.active:hover {
@@ -87,6 +88,17 @@ body {
     background-color: #f83029a1;
     color: white;
 }
+
+#save-button:hover {
+    background-color: #1d8548a1;
+    color: white;
+}
+
+#print-button:hover {
+    background-color: #9b59b6a1;
+    color: white;
+}
+
 
 .canvas-area {
     flex: 1;

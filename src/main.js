@@ -41,8 +41,27 @@ brushSizeSlider.oninput = (event) => {
     state.brushSize = brushSizeSlider.value; 
 }
 
-//action
+//clear canva
 const clearButton = document.getElementById('clear-button');
 clearButton.addEventListener('click', () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+});
+
+//save canva
+const saveButton = document.getElementById('save-button');
+saveButton.addEventListener('click', () => {
+    //first fill the canva with blank
+    ctx.save();
+
+    ctx.globalCompositeOperation = 'destination-over';
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.restore();
+
+    //create a link element a launch download
+    const link = document.createElement('a');
+    link.download = 'image.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
 });
