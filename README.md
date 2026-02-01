@@ -14,7 +14,7 @@ A simple paint application built with vanilla JavaScript. No frameworks, just pl
   
 ![Demo](./public/Filling.gif)
 
-- **Export** - Save your creations as PNG
+- **Export** - Print your creations and save its
   
 ![Demo](./public/Print.gif)
 
