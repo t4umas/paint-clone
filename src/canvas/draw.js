@@ -20,6 +20,10 @@ export const clearLine = (ctx, x1, y1, x2, y2) => {
 }
 
 export const fillFromPoint = (ctx, x, y) => {
+    x = Math.floor(x);
+    y = Math.floor(y);
+
+
     const {width, height} = ctx.canvas;
     const imageData = ctx.getImageData(0, 0, width, height);
     const data = imageData.data;
@@ -49,12 +53,25 @@ export const fillFromPoint = (ctx, x, y) => {
         data[i + 3] = 255; // Alpha
     }
     
-    const tolerance = 5;
-    const sameColor = (c1, c2) =>
-        Math.abs(c1[0] - c2[0]) < tolerance &&
-        Math.abs(c1[1] - c2[1]) < tolerance &&
-        Math.abs(c1[2] - c2[2]) < tolerance &&
-        Math.abs(c1[3] - c2[3]) < tolerance;    
+    const tolerance = 10;
+    const sameColor = (c1, c2) => {
+        // if not visible = white
+        if (c1[3] < 5) {
+            c1 = [255, 255, 255, 255];
+        }
+
+        // if not visible = white
+        if (c2[3] < 5) {
+            c2 = [255, 255, 255, 255];
+        }
+
+        return (
+            Math.abs(c1[0] - c2[0]) < tolerance &&
+            Math.abs(c1[1] - c2[1]) < tolerance &&
+            Math.abs(c1[2] - c2[2]) < tolerance
+        );  
+    };
+    
     const isInside = (x, y) =>
         x>=0 && y>=0 && x<width && y<height;
     
@@ -74,11 +91,13 @@ export const fillFromPoint = (ctx, x, y) => {
     
     while(stack.length) {
         const [cx, cy] = stack.pop()
-        if(isVisited(cx, cy)) continue;
         if(!isInside(cx, cy)) continue;
-
+        if(isVisited(cx, cy)) continue;
+        
         const color = getColorAt(cx,cy);
-        if(!sameColor(color, toFillColor)) continue;
+        if(!sameColor(color, toFillColor))  {
+            fillPixelAt(cx, cy);
+            continue};
         
         fillPixelAt(cx, cy);
         stack.push(
