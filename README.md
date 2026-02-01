@@ -7,7 +7,7 @@ A simple paint application built with vanilla JavaScript. No frameworks, just pl
 ## Features
 
 - **Drawing tools** - Brush with adjustable size and color
-![Demo](./public/Paint.GIF)
+![Demo](./public/Paint.gif)
 
 - **Fill tool** - Flood fill algorithm (the trickiest part to get right!)
 ![Demo](./public/Filling.gif)
